@@ -44,15 +44,15 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative py-20 bg-brown-deep border-t border-primary/20 overflow-hidden">
+    <footer className="relative py-12 md:py-16 lg:py-20 bg-brown-deep border-t border-primary/20 overflow-hidden">
       {/* Warm glowing orb effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full bg-primary/5 blur-[80px] md:blur-[100px] pointer-events-none" />
       
       {/* Decorative top border with tea cup pattern */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
       
-      {/* Floating tea leaves */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Floating tea leaves - hidden on mobile for performance */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
         {teaLeaves.map((leaf, i) => (
           <motion.div
             key={i}
@@ -78,8 +78,8 @@ const Footer = () => {
         ))}
       </div>
 
-      {/* Steam wisps rising effect */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-8 pointer-events-none">
+      {/* Steam wisps rising effect - hidden on mobile */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-8 pointer-events-none hidden md:flex">
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
@@ -100,8 +100,8 @@ const Footer = () => {
         ))}
       </div>
 
-      {/* Spice decorations - subtle icons */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Spice decorations - subtle icons - hidden on mobile */}
+      <div className="absolute inset-0 pointer-events-none hidden lg:block">
         {/* Cardamom - left side */}
         <motion.div
           className="absolute left-[5%] top-[15%] opacity-10"
@@ -162,11 +162,11 @@ const Footer = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="container mx-auto px-6 relative z-10"
+        className="container mx-auto px-4 md:px-6 relative z-10"
       >
         <div className="flex flex-col items-center text-center">
-          {/* Decorative tea cup divider above logo */}
-          <motion.div variants={itemVariants} className="mb-8">
+          {/* Decorative tea cup divider above logo - hidden on small mobile */}
+          <motion.div variants={itemVariants} className="mb-6 md:mb-8 hidden sm:block">
             <div className="flex items-center gap-4">
               <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/40" />
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-primary/60">
@@ -181,29 +181,29 @@ const Footer = () => {
           {/* Logo with warm glow */}
           <motion.div variants={itemVariants} className="mb-6 relative">
             <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-150" />
-            <img src={logo} alt="Chai Culture" className="h-16 relative z-10" />
+            <img src={logo} alt="Chai Culture" className="h-12 md:h-16 relative z-10" />
           </motion.div>
 
           {/* Tagline with decorative quotes */}
           <motion.p
             variants={itemVariants}
-            className="font-serif text-xl text-primary italic mb-4 relative"
+            className="font-serif text-lg md:text-xl text-primary italic mb-4 relative px-8"
           >
-            <span className="absolute -left-6 -top-2 text-3xl text-primary/30">"</span>
+            <span className="absolute left-0 md:-left-6 -top-2 text-2xl md:text-3xl text-primary/30">"</span>
             Brew the Royal Tradition
-            <span className="absolute -right-6 bottom-0 text-3xl text-primary/30">"</span>
+            <span className="absolute right-0 md:-right-6 bottom-0 text-2xl md:text-3xl text-primary/30">"</span>
           </motion.p>
 
           {/* Tea brewing tip */}
           <motion.p
             variants={itemVariants}
-            className="text-muted-foreground/70 text-sm mb-8 max-w-md"
+            className="text-muted-foreground/70 text-xs md:text-sm mb-6 md:mb-8 max-w-xs md:max-w-md px-2"
           >
             A perfect cup begins with patience — let the spices dance in simmering water
           </motion.p>
 
           {/* Social Links with enhanced styling */}
-          <motion.div variants={itemVariants} className="flex items-center gap-4 mb-10">
+          <motion.div variants={itemVariants} className="flex items-center gap-3 md:gap-4 mb-8 md:mb-10">
             {socialLinks.map((social) => (
               <motion.a
                 key={social.label}
@@ -211,10 +211,10 @@ const Footer = () => {
                 aria-label={social.label}
                 whileHover={{ scale: 1.15, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-full bg-secondary/50 border border-border flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 relative group"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-secondary/50 border border-border flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 relative group"
               >
                 <div className="absolute inset-0 rounded-full bg-primary/10 scale-0 group-hover:scale-100 transition-transform duration-300" />
-                <social.icon className="w-5 h-5 relative z-10" />
+                <social.icon className="w-4 h-4 md:w-5 md:h-5 relative z-10" />
               </motion.a>
             ))}
           </motion.div>

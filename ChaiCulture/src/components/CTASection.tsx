@@ -25,30 +25,30 @@ const CTASection = forwardRef<HTMLElement, CTASectionProps>((_, ref) => {
   };
 
   return (
-    <section ref={ref} className="relative py-24 md:py-32 overflow-hidden">
+    <section ref={ref} className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-gradient-royal opacity-50" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[100px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full bg-primary/5 blur-[80px] md:blur-[100px]" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 max-w-5xl mx-auto">
-          {/* TiltedCard Section */}
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto">
+          {/* TiltedCard Section - Hidden on small mobile, smaller on tablet */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 hidden sm:block"
           >
             <TiltedCard
               imageSrc={productImage}
               altText="Chai Culture Premium Tea"
               captionText="Premium Royal Chai"
-              containerHeight="320px"
-              containerWidth="280px"
-              imageHeight="320px"
-              imageWidth="280px"
-              rotateAmplitude={12}
+              containerHeight="260px"
+              containerWidth="220px"
+              imageHeight="260px"
+              imageWidth="220px"
+              rotateAmplitude={10}
               scaleOnHover={1.05}
               showMobileWarning={false}
               showTooltip
@@ -84,7 +84,7 @@ const CTASection = forwardRef<HTMLElement, CTASectionProps>((_, ref) => {
               {/* Decorative frame */}
               <div className="absolute -inset-1 bg-gradient-to-br from-primary/30 via-transparent to-primary/30 rounded-3xl blur-sm" />
               
-              <div className="relative bg-card/80 backdrop-blur-xl border border-primary/20 rounded-3xl p-8 md:p-12">
+              <div className="relative bg-card/80 backdrop-blur-xl border border-primary/20 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-12">
                 <AnimatePresence mode="wait">
                   {!isSubmitted ? (
                     <motion.div
@@ -94,7 +94,7 @@ const CTASection = forwardRef<HTMLElement, CTASectionProps>((_, ref) => {
                       transition={{ duration: 0.3 }}
                     >
                       {/* Header */}
-                      <div className="text-center mb-8">
+                      <div className="text-center mb-4 sm:mb-6 md:mb-8">
                         <motion.div
                           initial={{ scale: 0 }}
                           whileInView={{ scale: 1 }}

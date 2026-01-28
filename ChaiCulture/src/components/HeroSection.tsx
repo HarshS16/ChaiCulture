@@ -37,7 +37,7 @@ const HeroSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-0"
     >
       {/* Background video with parallax */}
       <motion.div
@@ -56,11 +56,11 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
       </motion.div>
 
-      {/* Glowing orb effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px] animate-glow-pulse" />
+      {/* Glowing orb effect - smaller on mobile */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-primary/10 blur-[80px] md:blur-[120px] animate-glow-pulse" />
 
-      {/* Floating tea particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Floating tea particles - fewer on mobile for performance */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
@@ -77,16 +77,16 @@ const HeroSection = () => {
       {/* Main content */}
       <motion.div
         style={{ y: contentY, opacity }}
-        className="relative z-10 container mx-auto px-6 text-center"
+        className="relative z-10 container mx-auto px-4 md:px-6 text-center"
       >
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="mb-8"
+          className="mb-6 md:mb-8"
         >
-          <img src={logo} alt="Chai Culture" className="h-24 md:h-32 mx-auto" />
+          <img src={logo} alt="Chai Culture" className="h-16 sm:h-20 md:h-24 lg:h-32 mx-auto" />
         </motion.div>
 
         {/* Tagline */}
@@ -94,7 +94,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold mb-6 text-gradient-gold"
+          className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-4 md:mb-6 text-gradient-gold px-2"
         >
           Brew the Royal Tradition
         </motion.h1>
@@ -104,32 +104,29 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="max-w-2xl mx-auto text-lg md:text-xl text-foreground/70 font-light leading-relaxed mb-12"
+          className="max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-foreground/70 font-light leading-relaxed mb-8 md:mb-12 px-2"
         >
           Experience the legacy of royal Indian chai, crafted with centuries-old recipes 
           and the finest spices from the palaces of heritage.
         </motion.p>
-
-        {/* Chai Cup with Steam Animation */}
-        
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on very small screens */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-primary/40 rounded-full flex justify-center pt-2"
+          className="w-5 h-8 md:w-6 md:h-10 border-2 border-primary/40 rounded-full flex justify-center pt-1.5 md:pt-2"
         >
           <motion.div
-            animate={{ opacity: [1, 0], y: [0, 16] }}
+            animate={{ opacity: [1, 0], y: [0, 12] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1.5 h-3 bg-primary rounded-full"
+            className="w-1 h-2 md:w-1.5 md:h-3 bg-primary rounded-full"
           />
         </motion.div>
       </motion.div>
@@ -138,3 +135,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
