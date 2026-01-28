@@ -81,15 +81,15 @@ const ProductSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-24 lg:py-32 overflow-hidden"
     >
       {/* Background pattern */}
       <div className="parallax-bg absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary))_1px,transparent_1px)] bg-[length:40px_40px]" />
       </div>
 
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
           {/* Text Content */}
           <div ref={textRef} className="order-2 lg:order-1">
             <motion.span
@@ -100,12 +100,12 @@ const ProductSection = () => {
               Introducing
             </motion.span>
 
-            <h2 className="font-serif text-3xl md:text-5xl font-semibold mb-6 text-foreground">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 md:mb-6 text-foreground">
               The Royal
-              <span className="text-gradient-gold block mt-2">Chai Premix</span>
+              <span className="text-gradient-gold block mt-1 md:mt-2">Chai Premix</span>
             </h2>
 
-            <p className="text-foreground/70 text-lg leading-relaxed mb-8">
+            <p className="text-foreground/70 text-sm sm:text-base md:text-lg leading-relaxed mb-6 md:mb-8">
               A meticulously crafted blend that brings the grandeur of royal Indian tea 
               culture to your home. Each sip tells a story of heritage, warmth, and 
               uncompromising quality.
@@ -159,7 +159,7 @@ const ProductSection = () => {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.8, type: 'spring' }}
-                className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-6 py-3 rounded-full font-serif text-lg shadow-lg"
+                className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 bg-primary text-primary-foreground px-4 py-2 md:px-6 md:py-3 rounded-full font-serif text-sm md:text-lg shadow-lg"
               >
                 Coming Soon
               </motion.div>
