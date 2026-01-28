@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700&family=Lato:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Royal Chai Culture Color Palette */
+    --background: 30 25% 8%;
+    --foreground: 38 35% 92%;
+
+    --card: 30 30% 12%;
+    --card-foreground: 38 35% 92%;
+
+    --popover: 30 30% 10%;
+    --popover-foreground: 38 35% 92%;
+
+    --primary: 38 65% 55%;
+    --primary-foreground: 30 25% 8%;
+
+    --secondary: 30 40% 18%;
+    --secondary-foreground: 38 35% 92%;
+
+    --muted: 30 20% 20%;
+    --muted-foreground: 38 20% 60%;
+
+    --accent: 38 80% 45%;
+    --accent-foreground: 30 25% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 38 30% 25%;
+    --input: 30 30% 15%;
+    --ring: 38 65% 55%;
+
+    --radius: 0.5rem;
+
+    /* Custom Chai Culture tokens */
+    --gold: 38 70% 50%;
+    --gold-light: 38 80% 65%;
+    --gold-dark: 38 60% 35%;
+    --cream: 38 40% 90%;
+    --cream-soft: 38 30% 95%;
+    --brown-deep: 30 40% 12%;
+    --brown-rich: 25 35% 18%;
+    --brown-warm: 30 30% 25%;
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(38, 70%, 50%), hsl(38, 80%, 65%));
+    --gradient-hero: linear-gradient(180deg, hsl(30, 40%, 8%) 0%, hsl(30, 35%, 15%) 50%, hsl(30, 40%, 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(30, 30%, 14%), hsl(30, 30%, 10%));
+    --gradient-royal: radial-gradient(ellipse at center, hsl(38, 50%, 20%) 0%, hsl(30, 40%, 8%) 70%);
+    
+    /* Shadows */
+    --shadow-gold: 0 0 40px hsl(38, 70%, 50%, 0.3);
+    --shadow-soft: 0 10px 40px hsl(30, 40%, 5%, 0.5);
+    --shadow-glow: 0 0 60px hsl(38, 70%, 50%, 0.2);
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --sidebar-background: 30 30% 10%;
+    --sidebar-foreground: 38 35% 92%;
+    --sidebar-primary: 38 65% 55%;
+    --sidebar-primary-foreground: 30 25% 8%;
+    --sidebar-accent: 30 40% 18%;
+    --sidebar-accent-foreground: 38 35% 92%;
+    --sidebar-border: 38 30% 25%;
+    --sidebar-ring: 38 65% 55%;
+  }
+
+  .dark {
+    --background: 30 25% 8%;
+    --foreground: 38 35% 92%;
+    --card: 30 30% 12%;
+    --card-foreground: 38 35% 92%;
+    --popover: 30 30% 10%;
+    --popover-foreground: 38 35% 92%;
+    --primary: 38 65% 55%;
+    --primary-foreground: 30 25% 8%;
+    --secondary: 30 40% 18%;
+    --secondary-foreground: 38 35% 92%;
+    --muted: 30 20% 20%;
+    --muted-foreground: 38 20% 60%;
+    --accent: 38 80% 45%;
+    --accent-foreground: 30 25% 8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 38 30% 25%;
+    --input: 30 30% 15%;
+    --ring: 38 65% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold-light)), hsl(var(--gold)), hsl(var(--gold-dark)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-royal {
+    background: var(--gradient-royal);
+  }
+
+  .shadow-gold-glow {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  /* Steam animation */
+  @keyframes steam {
+    0% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(-40px) translateX(10px) scale(1.2);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-80px) translateX(-5px) scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .animate-steam {
+    animation: steam 3s ease-in-out infinite;
+  }
+
+  .animate-steam-delay-1 {
+    animation: steam 3.5s ease-in-out infinite 0.5s;
+  }
+
+  .animate-steam-delay-2 {
+    animation: steam 4s ease-in-out infinite 1s;
+  }
+
+  /* Floating particles */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 7s ease-in-out infinite 2s;
+  }
+
+  /* Glow pulse */
+  @keyframes glow-pulse {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  /* Fade up */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
+  }
+}
